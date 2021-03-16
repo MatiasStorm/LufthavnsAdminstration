@@ -21,7 +21,6 @@ public class DepartureMapper implements RowMapper<Departure> {
         departure.setAC(resultSet.getString("departure_ac"));
         departure.setDestination(resultSet.getString("departure_destination"));
         departure.setDeparted(resultSet.getBoolean("is_departed"));
-        departure.setAirplaneID(resultSet.getInt("airplane_id"));
 
         return departure;
     }

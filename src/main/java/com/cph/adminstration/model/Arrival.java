@@ -9,7 +9,6 @@ public class Arrival {
     private String AC;
     private String destination;
     private Boolean isArrived;
-    private int airplaneID;
 
     public int getId() {
         return id;
@@ -51,19 +50,12 @@ public class Arrival {
         this.destination = destination;
     }
 
-    public Boolean getArrived() {
+    public Boolean getIsArrived() {
         return isArrived;
     }
 
-    public void setArrived(Boolean arrived) {
+    public void setIsArrived(Boolean arrived) {
         isArrived = arrived;
     }
 
-    public int getAirplaneID() {
-        return airplaneID;
-    }
-
-    public void setAirplaneID(int airplaneID) {
-        this.airplaneID = airplaneID;
-    }
 }

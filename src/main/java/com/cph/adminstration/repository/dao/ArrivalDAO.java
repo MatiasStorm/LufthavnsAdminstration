@@ -7,10 +7,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 
@@ -29,14 +26,16 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         String sql = "INSERT INTO arrival " +
-                "(arrival_date, route_number, arrival_time, arrival_ac, arrival_destination, is_arrived, airplane_id)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "(arrival_date, route_number, arrival_time, arrival_ac, arrival_destination, is_arrived)" +
+                " VALUES (?, ?, ?, ?, ?, ?)";
 
 
         String date = arrival.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String time = arrival.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-        template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
+
+
+        //template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, date);
@@ -44,8 +43,7 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
             ps.setString(3, time);
             ps.setString(4, arrival.getAC());
             ps.setString(5, arrival.getDestination());
-            ps.setBoolean(6, arrival.getArrived());
-            ps.setInt(7, arrival.getAirplaneID());
+            ps.setBoolean(6, arrival.getIsArrived());
             return ps;
         }, keyHolder);
 

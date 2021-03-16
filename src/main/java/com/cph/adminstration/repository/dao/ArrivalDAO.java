@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -37,17 +38,17 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
 
         //template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
         template.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, date);
             ps.setString(2, arrival.getRouteNumber());
             ps.setString(3, time);
-            ps.setString(4, arrival.getAC());
+            ps.setString(4, arrival.getAc());
             ps.setString(5, arrival.getDestination());
             ps.setBoolean(6, arrival.getIsArrived());
             return ps;
         }, keyHolder);
 
-        arrival.setId((Integer) keyHolder.getKey());
+        arrival.setId(keyHolder.getKey().intValue());
 
         return arrival;
     }

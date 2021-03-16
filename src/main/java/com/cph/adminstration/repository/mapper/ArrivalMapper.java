@@ -19,7 +19,7 @@ public class ArrivalMapper implements RowMapper<Arrival> {
         Time time = resultSet.getTime("arrival_time");
         arrival.setDateTime(LocalDateTime.of(date.getYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes(), 0));
         arrival.setRouteNumber(resultSet.getString("route_number"));
-        arrival.setAC(resultSet.getString("arrival_ac"));
+        arrival.setAc(resultSet.getString("arrival_ac"));
         arrival.setDestination(resultSet.getString("arrival_destination"));
         arrival.setIsArrived(resultSet.getBoolean("is_arrived"));
 

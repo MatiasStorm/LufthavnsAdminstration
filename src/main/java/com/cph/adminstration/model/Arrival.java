@@ -6,7 +6,7 @@ public class Arrival {
     private int id;
     private LocalDateTime dateTime;
     private String routeNumber;
-    private String AC;
+    private String ac;
     private String destination;
     private Boolean isArrived;
 
@@ -34,12 +34,12 @@ public class Arrival {
         this.routeNumber = routeNumber;
     }
 
-    public String getAC() {
-        return AC;
+    public String getAc() {
+        return ac;
     }
 
-    public void setAC(String AC) {
-        this.AC = AC;
+    public void setAc(String AC) {
+        this.ac = AC;
     }
 
     public String getDestination() {

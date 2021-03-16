@@ -1,9 +1,11 @@
 package com.cph.adminstration.repository.mapper;
 import com.cph.adminstration.model.Arrival;
 import org.springframework.jdbc.core.RowMapper;
-
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDateTime;
 
 public class ArrivalMapper implements RowMapper<Arrival> {
 
@@ -13,7 +15,14 @@ public class ArrivalMapper implements RowMapper<Arrival> {
         Arrival arrival = new Arrival();
 
         arrival.setId(resultSet.getInt("arrival_id"));
-       // arrival.setDateTime(resultSet.getTimestamp());
+        Date date = resultSet.getDate("arrival_date");
+        Time time = resultSet.getTime("arrival_time");
+        arrival.setDateTime(LocalDateTime.of(date.getYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes(), 0));
+        arrival.setRouteNumber(resultSet.getString("route_number"));
+        arrival.setAC(resultSet.getString("arrival_ac"));
+        arrival.setDestination(resultSet.getString("arrival_destination"));
+        arrival.setArrived(resultSet.getBoolean("is_arrived"));
+        arrival.setAirplaneID(resultSet.getInt("airplane_id"));
 
         return arrival;
     }

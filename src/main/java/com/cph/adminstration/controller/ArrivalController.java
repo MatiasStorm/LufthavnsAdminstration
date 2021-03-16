@@ -1,6 +1,27 @@
 package com.cph.adminstration.controller;
-import org.springframework.web.bind.annotation.RestController;
+import com.cph.adminstration.model.Arrival;
+import com.cph.adminstration.service.ArrivalService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/arrival")
 @RestController
 public class ArrivalController {
+
+    private final ArrivalService arrivalService;
+
+    public ArrivalController(ArrivalService arrivalService){
+        this.arrivalService = arrivalService;
+    }
+
+    @PostMapping()
+    //Herunder bliver produktet lavet til et objekt og fyldes ud med data fra Json
+    public ResponseEntity<Arrival> createProduct(@RequestBody Arrival arrival){
+        //Får vi productet tilbage med ID, efter ændring i repository create og service, som vi lige har oprettet
+        Arrival arrivalResponse = arrivalService.create(arrival);
+        //Her returneres en responseentity, der gør det muligt at definere Http statussen - som viser om man overholder reglerne for en rest controller.
+        return new ResponseEntity<Arrival>(arrivalResponse, HttpStatus.CREATED);
+
+    }
 }

@@ -1,11 +1,13 @@
 package com.cph.adminstration.model;
 
+import java.time.LocalDateTime;
+
 public class Preparation {
     private String name;
     private int id;
     private String department;
-    private int start;
-    private int finish;
+    private LocalDateTime start;
+    private LocalDateTime finish;
 
     public String getName() {
         return name;
@@ -31,27 +33,27 @@ public class Preparation {
         this.department = department;
     }
 
-    public int getStart() {
+    public LocalDateTime getStart() {
         return start;
     }
 
-    public void setStart(int start) {
+    public void setStart(LocalDateTime start) {
         this.start = start;
     }
 
-    public int getFinish() {
+    public LocalDateTime getFinish() {
         return finish;
     }
 
-    public void setFinish(int finish) {
+    public void setFinish(LocalDateTime finish) {
         this.finish = finish;
     }
 
-    public Preparation(String name, int id, String department, int start, int finish) {
+    public Preparation(String name, int id, String department, LocalDateTime start, LocalDateTime finish) {
         this.name = name;
         this.id = id;
         this.department = department;
-        this.start = start;
+        this.start =  start;
         this.finish = finish;
     }
 

@@ -1,6 +1,7 @@
 package com.cph.adminstration.repository.dao;
 
 import com.cph.adminstration.model.Arrival;
+import com.cph.adminstration.repository.mapper.ArrivalMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -15,12 +16,13 @@ import java.util.List;
 @Repository
 public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
 
+    private final ArrivalMapper arrivalMapper = new ArrivalMapper();
+
     private final JdbcTemplate template;
 
     public ArrivalDAO(JdbcTemplate template) {
         this.template = template;
     }
-
 
     @Override
     public Arrival create(Arrival arrival) {
@@ -30,10 +32,8 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
                 "(arrival_date, route_number, arrival_time, arrival_ac, arrival_destination, is_arrived)" +
                 " VALUES (?, ?, ?, ?, ?, ?)";
 
-
         String date = arrival.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String time = arrival.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
 
 
         //template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
@@ -55,7 +55,8 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
 
     @Override
     public List<Arrival> readAll() {
-        return null;
+        String sql = "SELECT * FROM arrival";
+        return template.query(sql, arrivalMapper);
     }
 
     @Override

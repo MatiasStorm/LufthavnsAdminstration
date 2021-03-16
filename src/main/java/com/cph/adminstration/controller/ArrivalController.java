@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/arrival")
 @RestController
 public class ArrivalController {
@@ -13,6 +15,11 @@ public class ArrivalController {
 
     public ArrivalController(ArrivalService arrivalService){
         this.arrivalService = arrivalService;
+    }
+
+    @GetMapping()
+    public List<Arrival> getProduct() {
+        return arrivalService.readAll();
     }
 
     @PostMapping()

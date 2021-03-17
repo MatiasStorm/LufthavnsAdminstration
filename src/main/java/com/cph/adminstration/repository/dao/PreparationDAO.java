@@ -14,7 +14,7 @@ import java.util.List;
 public class PreparationDAO implements CRUD_DAO<Preparation, Integer> {
 
     private final JdbcTemplate template;
-    PreparationMapper preparationMapper;
+    PreparationMapper preparationMapper ;
 
     public PreparationDAO(JdbcTemplate template) {
         this.template = template;

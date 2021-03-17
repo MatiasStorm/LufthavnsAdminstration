@@ -6,10 +6,9 @@ public class Departure {
     private int id;
     private LocalDateTime dateTime;
     private String routeNumber;
-    private String AC;
+    private String ac;
     private String destination;
     private Boolean isDeparted;
-    private int airplaneID;
 
     public int getId() {
         return id;
@@ -35,12 +34,12 @@ public class Departure {
         this.routeNumber = routeNumber;
     }
 
-    public String getAC() {
-        return AC;
+    public String getAc() {
+        return ac;
     }
 
-    public void setAC(String AC) {
-        this.AC = AC;
+    public void setAc(String ac) {
+        this.ac = ac;
     }
 
     public String getDestination() {
@@ -51,19 +50,12 @@ public class Departure {
         this.destination = destination;
     }
 
-    public Boolean getDeparted() {
+    public Boolean getIsDeparted() {
         return isDeparted;
     }
 
-    public void setDeparted(Boolean departed) {
+    public void setIsDeparted(Boolean departed) {
         isDeparted = departed;
     }
 
-    public int getAirplaneID() {
-        return airplaneID;
-    }
-
-    public void setAirplaneID(int airplaneID) {
-        this.airplaneID = airplaneID;
-    }
 }

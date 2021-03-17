@@ -24,7 +24,7 @@ public class DepartureController {
 
     @PostMapping()
     //Herunder bliver produktet lavet til et objekt og fyldes ud med data fra Json
-    public ResponseEntity<Departure> createDepartures(@RequestBody Departure departure){
+    public ResponseEntity<Departure> createDeparture(@RequestBody Departure departure){
         //Får vi productet tilbage med ID, efter ændring i repository create og service, som vi lige har oprettet
         Departure departureResponse = departureService.create(departure);
         //Her returneres en responseentity, der gør det muligt at definere Http statussen - som viser om man overholder reglerne for en rest controller.

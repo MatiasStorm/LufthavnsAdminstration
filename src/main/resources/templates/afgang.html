@@ -12,12 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
 
-
-    <style>
-       #btnAdd {
-           text-align: center;
-       }
-    </style>
 </head>
 <body>
 
@@ -26,10 +20,9 @@
 
 <div class="center">
     <label>Dato</label>
-    <input type="datetime-local" id="date" placeholder="Eks: 2020-09-01">
+    <input type="datetime-local" id="date">
     <label>Rutenummer</label>
     <input id="routeNumber" placeholder="Rutenummer">
-    <label>Tid</label>
     <label>AC</label>
     <input id="ac" placeholder="AC">
     <label>Destination</label>
@@ -73,7 +66,6 @@
 
 
     $("#btnAdd").click(function () {
-        debugger;
         //Et javascript objekt
         let departure = {
             dateTime: $("#date").val(),

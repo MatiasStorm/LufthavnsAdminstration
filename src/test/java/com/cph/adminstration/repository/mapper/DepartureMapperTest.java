@@ -51,8 +51,8 @@ class DepartureMapperTest {
         LocalDateTime dateTime = LocalDateTime.of(date.getYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes(),time.getSeconds());
         assertEquals(departure.getDateTime(), dateTime);
         assertEquals(departure.getRouteNumber(), routeNumber);
-        assertEquals(departure.getAC(), ac);
+        assertEquals(departure.getAc(), ac);
         assertEquals(departure.getDestination(), destination);
-        assertEquals(departure.getDeparted(), isDeparted);
+        assertEquals(departure.getIsDeparted(), isDeparted);
     }
 }

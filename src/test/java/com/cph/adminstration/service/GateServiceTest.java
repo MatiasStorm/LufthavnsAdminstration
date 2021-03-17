@@ -5,12 +5,9 @@ import com.cph.adminstration.repository.dao.GateDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +31,6 @@ class GateServiceTest {
     void setUp() {
        gateService = new GateService(mockedGateDAO);
 
-        gate = new Gate();
-        gate.setNumber(1);
-        gate.setTerminal_id(1);
-        gate.setGate_size('M');
-
     }
 
     @Test
@@ -52,5 +44,21 @@ class GateServiceTest {
     void readAll() {
         gateList = gateService.readAll();
         Mockito.verify(mockedGateDAO, times(1)).readAll();
+    }
+
+    @Test
+    void getByID(){
+
+        gate = new Gate();
+        gate.setNumber(1);
+        gate.setTerminalId(2);
+        gate.setGateSize('M');
+
+        Mockito.when(mockedGateDAO.getByID(1)).thenReturn(gate);
+        char size = gateService.getByID(1).getGateSize();
+
+        assertEquals('M', size);
+
+        Mockito.verify(mockedGateDAO, times(1)).getByID(1);
     }
 }

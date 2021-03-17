@@ -13,8 +13,8 @@ public class GateMapper implements RowMapper<Gate> {
         Gate gate = new Gate();
 
         gate.setNumber(resultSet.getInt("number"));
-        gate.setTerminal_id(resultSet.getInt("terminal_id"));
-        gate.setGate_size(resultSet.getString("gate_size").charAt(0));
+        gate.setTerminalId(resultSet.getInt("terminal_id"));
+        gate.setGateSize(resultSet.getString("gate_size").charAt(0));
 
         return gate;
     }

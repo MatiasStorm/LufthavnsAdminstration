@@ -23,7 +23,7 @@ public class GateDAO implements CRUD_DAO<Gate, Integer> {
         String sql = "INSERT INTO gate" +
                 "(number, terminal_id, gate_size)" + "VALUES (?,?,?)";
 
-        template.update(sql, gate.getNumber(), gate.getTerminal_id(), gate.getGate_size());
+        template.update(sql, gate.getNumber(), gate.getTerminalId(), gate.getGateSize());
         return gate;
     }
 
@@ -34,8 +34,9 @@ public class GateDAO implements CRUD_DAO<Gate, Integer> {
     }
 
     @Override
-    public Gate getByID(Integer id) {
-        return null;
+    public Gate getByID(Integer number) {
+        String sql = "SELECT * FROM gate WHERE number = ?";
+               return template.queryForObject(sql, gateMapper, number);
     }
 
     @Override

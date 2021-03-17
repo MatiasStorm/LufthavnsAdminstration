@@ -3,8 +3,8 @@ package com.cph.adminstration.model;
 public class Gate {
 
     private int number;
-    private int terminal_id;
-    private char gate_size;
+    private int terminalId;
+    private char gateSize;
 
 
     public int getNumber() {
@@ -15,20 +15,20 @@ public class Gate {
         this.number = number;
     }
 
-    public int getTerminal_id() {
-        return terminal_id;
+    public int getTerminalId() {
+        return terminalId;
     }
 
-    public void setTerminal_id(int terminal_id) {
-        this.terminal_id = terminal_id;
+    public void setTerminalId(int terminalId) {
+        this.terminalId = terminalId;
     }
 
-    public char getGate_size() {
-        return gate_size;
+    public char getGateSize() {
+        return gateSize;
     }
 
-    public void setGate_size(char gate_size) {
-        this.gate_size = gate_size;
+    public void setGateSize(char gateSize) {
+        this.gateSize = gateSize;
     }
 
 

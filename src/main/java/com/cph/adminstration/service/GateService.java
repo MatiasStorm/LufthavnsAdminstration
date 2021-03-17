@@ -19,5 +19,7 @@ public class GateService {
 
     public List<Gate> readAll() {return  gateDAO.readAll();}
 
+    public Gate getByID(Integer number){return  gateDAO.getByID(number);}
+
 
 }

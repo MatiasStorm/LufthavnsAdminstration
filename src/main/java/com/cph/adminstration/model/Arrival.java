@@ -10,6 +10,21 @@ public class Arrival {
     private String destination;
     private Boolean isArrived;
 
+    public Arrival(){}
+
+    public Arrival(int id, LocalDateTime dateTime, String routeNumber, String ac, String destination, boolean isArrived){
+        this(dateTime, routeNumber, ac, destination, isArrived);
+        this.id = id;
+    }
+
+    public Arrival(LocalDateTime dateTime, String routeNumber, String ac, String destination, boolean isArrived){
+        this.dateTime = dateTime;
+        this.routeNumber = routeNumber;
+        this.ac = ac;
+        this.destination = destination;
+        this.isArrived = isArrived;
+    }
+
     public int getId() {
         return id;
     }

@@ -1,7 +1,6 @@
 package com.cph.adminstration.service;
 
 import com.cph.adminstration.model.Departure;
-import com.cph.adminstration.repository.dao.ArrivalDAO;
 import com.cph.adminstration.repository.dao.DepartureDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class DepartureServiceTest {

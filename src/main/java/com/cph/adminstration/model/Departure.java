@@ -9,7 +9,6 @@ public class Departure {
     private String AC;
     private String destination;
     private Boolean isDeparted;
-    private int airplaneID;
 
     public int getId() {
         return id;
@@ -59,11 +58,4 @@ public class Departure {
         isDeparted = departed;
     }
 
-    public int getAirplaneID() {
-        return airplaneID;
-    }
-
-    public void setAirplaneID(int airplaneID) {
-        this.airplaneID = airplaneID;
-    }
 }

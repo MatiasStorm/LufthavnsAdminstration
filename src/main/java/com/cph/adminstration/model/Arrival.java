@@ -6,10 +6,24 @@ public class Arrival {
     private int id;
     private LocalDateTime dateTime;
     private String routeNumber;
-    private String AC;
+    private String ac;
     private String destination;
     private Boolean isArrived;
-    private int airplaneID;
+
+    public Arrival(){}
+
+    public Arrival(int id, LocalDateTime dateTime, String routeNumber, String ac, String destination, boolean isArrived){
+        this(dateTime, routeNumber, ac, destination, isArrived);
+        this.id = id;
+    }
+
+    public Arrival(LocalDateTime dateTime, String routeNumber, String ac, String destination, boolean isArrived){
+        this.dateTime = dateTime;
+        this.routeNumber = routeNumber;
+        this.ac = ac;
+        this.destination = destination;
+        this.isArrived = isArrived;
+    }
 
     public int getId() {
         return id;
@@ -35,12 +49,12 @@ public class Arrival {
         this.routeNumber = routeNumber;
     }
 
-    public String getAC() {
-        return AC;
+    public String getAc() {
+        return ac;
     }
 
-    public void setAC(String AC) {
-        this.AC = AC;
+    public void setAc(String AC) {
+        this.ac = AC;
     }
 
     public String getDestination() {
@@ -51,19 +65,12 @@ public class Arrival {
         this.destination = destination;
     }
 
-    public Boolean getArrived() {
+    public Boolean getIsArrived() {
         return isArrived;
     }
 
-    public void setArrived(Boolean arrived) {
+    public void setIsArrived(Boolean arrived) {
         isArrived = arrived;
     }
 
-    public int getAirplaneID() {
-        return airplaneID;
-    }
-
-    public void setAirplaneID(int airplaneID) {
-        this.airplaneID = airplaneID;
-    }
 }

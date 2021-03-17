@@ -18,13 +18,13 @@ public class ArrivalController {
     }
 
     @GetMapping()
-    public List<Arrival> getProduct() {
+    public List<Arrival> getArrivals() {
         return arrivalService.readAll();
     }
 
     @PostMapping()
     //Herunder bliver produktet lavet til et objekt og fyldes ud med data fra Json
-    public ResponseEntity<Arrival> createProduct(@RequestBody Arrival arrival){
+    public ResponseEntity<Arrival> createArrival(@RequestBody Arrival arrival){
         //Får vi productet tilbage med ID, efter ændring i repository create og service, som vi lige har oprettet
         Arrival arrivalResponse = arrivalService.create(arrival);
         //Her returneres en responseentity, der gør det muligt at definere Http statussen - som viser om man overholder reglerne for en rest controller.

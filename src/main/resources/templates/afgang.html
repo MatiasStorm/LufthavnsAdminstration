@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afgang</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
+
+
+    <style>
+       #btnAdd {
+           text-align: center;
+       }
+    </style>
+</head>
+<body>
+
+<h1>Afgang</h1>
+
+
+<div class="center">
+    <label>Dato</label>
+    <input type="datetime-local" id="date" placeholder="Eks: 2020-09-01">
+    <label>Rutenummer</label>
+    <input id="routeNumber" placeholder="Rutenummer">
+    <label>Tid</label>
+    <label>AC</label>
+    <input id="ac" placeholder="AC">
+    <label>Destination</label>
+    <input id="destination" placeholder="Destination">
+    <label>Afgået</label>
+    <input id="departed" placeholder="Afgået">
+    <button type="submit" class="btn btn-light" id="btnAdd">Tilføj</button>
+</div>
+
+
+<table class="table table-striped table-bordered" id="departure_table">
+    <tr>
+        <th>Dato</th>
+        <th>Rutenummer</th>
+        <th>Tidspunkt</th>
+        <th>AC</th>
+        <th>Destination</th>
+        <th>Afgået</th>
+    </tr>
+    <tr>
+
+    </tr>
+</table>
+
+
+<script>
+
+    $.ajax({
+        url: "http://localhost:8080/departure"
+    }).then(function (data) {
+        let trHTML = '';
+        console.log(data)
+        //Looper gennem alle data i vores product og putter dem i tables
+        $.each(data, function (i, departure) {
+            trHTML += '<tr><td>' + departure.dateTime.split('T')[0] + '</td><td>' + departure.routeNumber + '</td> <td>' + departure.dateTime.split('T')[1] + '</td> <td>' + departure.ac + '</td><td>' + departure.destination + '</td><td>' + departure.isDeparted + '</td></tr>';
+        });
+
+        //Her tilføjes alt data fra loopet til vores product table (.append er lidt ligesom en liste der putter en masse række ind i noget)
+        $('#departure_table').append(trHTML);
+    });
+
+
+    $("#btnAdd").click(function () {
+        debugger;
+        //Et javascript objekt
+        let departure = {
+            dateTime: $("#date").val(),
+            routeNumber: $("#routeNumber").val(),
+            ac: $("#ac").val(),
+            destination: $("#destination").val(),
+            isDeparted: $("#departed").val()
+        };
+
+        $.ajax({
+            url: 'http://localhost:8080/departure',
+            type: 'POST',
+            //Ændre requestens body format til Json. Så den kan finde ud af det hele :)
+            contentType: 'application/json',
+            //Laver vores javascript object om til en string der indeholder Json
+            data: JSON.stringify(departure)
+        }).then(
+            function (departure) {
+                let trHTML = '';
+                trHTML += '<tr><td>' + departure.dateTime.split('T')[0] + '</td><td>' + departure.routeNumber + '</td> <td>' + departure.dateTime.split('T')[1] + '</td> <td>' + departure.ac + '</td><td>' + departure.destination + '</td><td>' + departure.isDeparted + '</td></tr>';
+                $('#departure_table').append(trHTML);
+            });
+    });
+
+
+</script>
+</body>
+</html>

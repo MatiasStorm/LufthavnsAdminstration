@@ -11,4 +11,9 @@ public class RoutingController {
         return "ankomst";
     }
 
+    @GetMapping("/afgang")
+    public String departures(){
+        return "afgang";
+    }
+
 }

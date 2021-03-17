@@ -18,9 +18,9 @@ public class DepartureMapper implements RowMapper<Departure> {
         Time time = resultSet.getTime("departure_time");
         departure.setDateTime(LocalDateTime.of(date.getYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes(), 0));
         departure.setRouteNumber(resultSet.getString("route_number"));
-        departure.setAC(resultSet.getString("departure_ac"));
+        departure.setAc(resultSet.getString("departure_ac"));
         departure.setDestination(resultSet.getString("departure_destination"));
-        departure.setDeparted(resultSet.getBoolean("is_departed"));
+        departure.setIsDeparted(resultSet.getBoolean("is_departed"));
 
         return departure;
     }

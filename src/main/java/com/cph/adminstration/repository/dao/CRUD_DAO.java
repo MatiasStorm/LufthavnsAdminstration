@@ -6,7 +6,7 @@ public interface CRUD_DAO<T, K> {
 
     T create(T t);
     List<T> readAll();
-    T getByID(K id);
+    T getByID(K primaryKey);
     void update(T t);
-    void delete(K id);
+    void delete(K primaryKey);
 }

@@ -23,7 +23,7 @@ public class GateDAO implements CRUD_DAO<Gate, Integer> {
         String sql = "INSERT INTO gate" +
                 "(number, terminal_id, gate_size)" + "VALUES (?,?,?)";
 
-        template.update(sql, gate.getNumber(), gate.getTerminalId(), gate.getGateSize());
+        template.update(sql, gate.getNumber(), gate.getTerminalId(), Character.toString(gate.getGateSize()));
         return gate;
     }
 

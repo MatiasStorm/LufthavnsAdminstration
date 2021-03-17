@@ -26,30 +26,30 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
 
     @Override
     public Arrival create(Arrival arrival) {
-            KeyHolder keyHolder = new GeneratedKeyHolder();
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
-            String sql = "INSERT INTO arrival " +
-                    "(arrival_date, route_number, arrival_time, arrival_ac, arrival_destination, is_arrived, airplane_id)" +
-                    " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO arrival " +
+                "(arrival_date, route_number, arrival_time, arrival_ac, arrival_destination, is_arrived, airplane_id)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 
-            String date = arrival.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            String time = arrival.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        String date = arrival.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time = arrival.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-            template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
-            template.update(connection -> {
-                PreparedStatement ps = connection.prepareStatement(sql);
-                ps.setString(1, date);
-                ps.setString(2, arrival.getRouteNumber());
-                ps.setString(3, time);
-                ps.setString(4, arrival.getAC());
-                ps.setString(5, arrival.getDestination());
-                ps.setBoolean(6, arrival.getArrived());
-                ps.setInt(7, arrival.getAirplaneID());
-                return ps;
-            }, keyHolder);
+        template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
+        template.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, date);
+            ps.setString(2, arrival.getRouteNumber());
+            ps.setString(3, time);
+            ps.setString(4, arrival.getAC());
+            ps.setString(5, arrival.getDestination());
+            ps.setBoolean(6, arrival.getArrived());
+            ps.setInt(7, arrival.getAirplaneID());
+            return ps;
+        }, keyHolder);
 
-            arrival.setId((Integer) keyHolder.getKey());
+        arrival.setId((Integer) keyHolder.getKey());
 
         return arrival;
     }

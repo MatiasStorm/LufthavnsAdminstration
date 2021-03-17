@@ -24,6 +24,7 @@ public class ArrivalMapper implements RowMapper<Arrival> {
         arrival.setArrived(resultSet.getBoolean("is_arrived"));
         arrival.setAirplaneID(resultSet.getInt("airplane_id"));
 
+
         return arrival;
     }
 }

@@ -6,6 +6,7 @@ public class Gate {
     private int terminal_id;
     private char gate_size;
 
+
     public int getNumber() {
         return number;
     }

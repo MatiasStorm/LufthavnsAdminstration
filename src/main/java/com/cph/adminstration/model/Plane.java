@@ -2,15 +2,15 @@ package com.cph.adminstration.model;
 
 public class Plane {
 
-    private int iata;
+    private String iata;
     private String type;
     private char planeSize;
 
-    public int getIata() {
+    public String getIata() {
         return iata;
     }
 
-    public void setIata(int iata) {
+    public void setIata(String iata) {
         this.iata = iata;
     }
 

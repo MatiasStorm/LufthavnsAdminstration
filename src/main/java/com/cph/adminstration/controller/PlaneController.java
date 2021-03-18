@@ -24,7 +24,7 @@ public class PlaneController {
     public List<Plane> getPlane() {return planeService.readAll();}
 
     @GetMapping("/{iataId}")
-    public Plane getPlane(@PathVariable("iataId") int iataId) {return planeService.getByID(iataId);}
+    public Plane getPlane(@PathVariable("iataId") String iataId) {return planeService.getByID(iataId);}
 
      @PostMapping()
     public ResponseEntity<Plane> createPlane(@RequestBody Plane plane) {

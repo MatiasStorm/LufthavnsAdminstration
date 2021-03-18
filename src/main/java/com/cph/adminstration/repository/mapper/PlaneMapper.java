@@ -14,7 +14,7 @@ public class PlaneMapper implements RowMapper<Plane> {
 
         Plane plane = new Plane();
 
-        plane.setIata(resultSet.getInt("iata"));
+        plane.setIata(resultSet.getString("iata"));
         plane.setType(resultSet.getString("type"));
         plane.setPlaneSize(resultSet.getString("size").charAt(0));
 

@@ -21,7 +21,7 @@ public class PlaneService {
         return planeDAO.readAll();
     }
 
-    public Plane getByID(Integer iata) {return  planeDAO.getByID(iata);}
+    public Plane getByID(String iata) {return  planeDAO.getByID(iata);}
 
 
 

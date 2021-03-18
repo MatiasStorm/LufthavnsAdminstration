@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
+public class PlaneDAO implements CRUD_DAO<Plane, String> {
 
     private final JdbcTemplate template;
     private final PlaneMapper planeMapper = new PlaneMapper();
@@ -34,7 +34,7 @@ public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
     }
 
     @Override
-    public Plane getByID(Integer iata)
+    public Plane getByID(String iata)
     {
         String sql = "SELECT * FROM plane WHERE iata = ?";
         return template.queryForObject(sql, planeMapper, iata);
@@ -46,7 +46,7 @@ public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
     }
 
     @Override
-    public void delete(Integer primaryKey) {
+    public void delete(String iata) {
 
     }
 }

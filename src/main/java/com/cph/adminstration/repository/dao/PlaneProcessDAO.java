@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -28,12 +29,15 @@ public class PlaneProcessDAO implements CRUD_DAO<PlaneProcess, Integer> {
                 "(work_id, departure_id, arrival_id, start, end, plane_processing_id)" +
                 " VALUES (?, ?, ?, ?, ?, ?)";
 
-        String start = planeProcess.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        String end = planeProcess.getFinish().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        template.update(sql, planeProcess.getId(), planeProcess.getDepartureId(), planeProcess.getArrivalId(), start,  end, planeProcess.getPlaneProcessingId() );
+
+            String start = planeProcess.getStart()!= null ? planeProcess.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null ;
+
+            String end =planeProcess.getFinish()!= null ? planeProcess.getFinish().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null;
+
+
         template.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, planeProcess.getId());
             ps.setInt(2, planeProcess.getDepartureId());
             ps.setInt(3, planeProcess.getArrivalId());
@@ -42,7 +46,7 @@ public class PlaneProcessDAO implements CRUD_DAO<PlaneProcess, Integer> {
             ps.setInt(6, planeProcess.getPlaneProcessingId());
             return ps;
         }, keyHolder);
-        planeProcess.setId((Integer) keyHolder.getKey());
+        planeProcess.setId(keyHolder.getKey().intValue());
         return planeProcess;
 }
     @Override

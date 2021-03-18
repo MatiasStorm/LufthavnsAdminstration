@@ -1,6 +1,7 @@
 package com.cph.adminstration.repository.dao;
 
 import com.cph.adminstration.model.Plane;
+import com.cph.adminstration.repository.mapper.PlaneMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
 
     private final JdbcTemplate template;
+    private final PlaneMapper planeMapper = new PlaneMapper();
 
     public PlaneDAO(JdbcTemplate template) {
         this.template = template;
@@ -27,13 +29,14 @@ public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
     @Override
     public List<Plane> readAll() {
         String sql = "SELECT * FROM plane";
-
-        return null;
+        return template.query(sql, planeMapper);
     }
 
     @Override
-    public Plane getByID(Integer primaryKey) {
-        return null;
+    public Plane getByID(Integer iata)
+    {
+        String sql = "SELECT * FROM plane WHERE iata = ?";
+        return template.queryForObject(sql, planeMapper, iata);
     }
 
     @Override

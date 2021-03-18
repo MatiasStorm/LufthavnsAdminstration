@@ -59,14 +59,24 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
         return template.query(sql, arrivalMapper);
     }
 
+
+
     @Override
     public Arrival getByID(Integer id) {
-        return null;
+        String sql = "SELECT * FROM arrival WHERE arrival_id=?";
+        return template.queryForObject(sql, arrivalMapper, id);
     }
 
     @Override
     public void update(Arrival arrival) {
+        String sql = "UPDATE arrival SET " +
+                "arrival_date=?, route_number=?, arrival_time=?, arrival_ac=?, arrival_destination=?, is_arrived=?" +
+                " WHERE arrival_id=?";
 
+        String date = arrival.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time = arrival.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAc(), arrival.getDestination(), arrival.getIsArrived(), arrival.getId());
     }
 
     @Override

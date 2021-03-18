@@ -20,7 +20,9 @@ public class ArrivalService {
         return arrivalDAO.create(arrival);
     }
 
-    public void update(Arrival arrival) { arrivalDAO.update(arrival);
+    public Arrival update(Arrival arrival) {
+        arrivalDAO.update(arrival);
+        return arrival;
     }
 
     public List<Arrival> readAll() {

@@ -36,9 +36,9 @@ public class ArrivalController {
     //Put mapping bruges til at ændre på et objekt
     @PutMapping("")
     //Herunder bliver produktet lavet til et objekt og fyldes ud med data fra Json
-    public Arrival putArrival(@RequestBody Arrival arrival) {
+    public ResponseEntity<Arrival> putArrival(@RequestBody Arrival arrival) {
         // Smid alt fra vores Json ned i en update metode og skift det man har ændret i produktet
-        arrivalService.update(arrival);
-        return arrival;
+        Arrival arrivalRespone = arrivalService.update(arrival);
+        return new ResponseEntity<Arrival>(arrivalRespone, HttpStatus.OK);
     }
 }

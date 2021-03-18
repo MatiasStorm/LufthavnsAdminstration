@@ -21,7 +21,7 @@ class PlaneProcessDAOTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    void create (){ //"yyyy-MM-dd HH:mm:ss"//
+    void create (){
         PlaneProcess plane = new PlaneProcess();
         plane.setWork_id(1);
         plane.setDepartureId(1);

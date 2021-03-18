@@ -3,10 +3,11 @@ package com.cph.adminstration.repository.dao;
 import com.cph.adminstration.model.Plane;
 import com.cph.adminstration.repository.mapper.PlaneMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
 
     private final JdbcTemplate template;

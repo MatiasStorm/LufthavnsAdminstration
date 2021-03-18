@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDateTime;
 
-public class DepartureMapper implements RowMapper<Departure> {
+    public class DepartureMapper implements RowMapper<Departure> {
 
     @Override
     public Departure mapRow(ResultSet resultSet, int i) throws SQLException {

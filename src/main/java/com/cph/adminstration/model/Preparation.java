@@ -3,19 +3,36 @@ package com.cph.adminstration.model;
 import java.time.LocalDateTime;
 
 public class Preparation {
-    private String name;
     private int id;
-    private String department;
+    private int departureID;
     private LocalDateTime start;
     private LocalDateTime finish;
+    private int planeProcessingId;
+    private int arrival_id;
 
-    public String getName() {
-        return name;
+    public Preparation() {
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Preparation(int id, int departureID, LocalDateTime finish, int planeProcessingId, int arrival_id) {
+        this.id = id;
+        this.departureID = departureID;
+        this.finish = finish;
+        this.planeProcessingId = planeProcessingId;
+        this.arrival_id = arrival_id;
     }
+
+    public int getArrival_id() {
+        return arrival_id;
+    }
+
+    public void setArrival_id(int arrival_id) {
+        this.arrival_id = arrival_id;
+    }
+
+    public int getPlaneProcessingId() { return planeProcessingId; }
+
+    public void setPlaneProcessingId(int planeProcessingId) { this.planeProcessingId = planeProcessingId; }
 
     public int getId() {
         return id;
@@ -25,12 +42,12 @@ public class Preparation {
         this.id = id;
     }
 
-    public String getDepartment() {
-        return department;
+    public int getDepartureID() {
+        return departureID;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartureID(int departureID) {
+        this.departureID = departureID;
     }
 
     public LocalDateTime getStart() {
@@ -49,22 +66,14 @@ public class Preparation {
         this.finish = finish;
     }
 
-    public Preparation(String name, int id, String department, LocalDateTime start, LocalDateTime finish) {
-        this.name = name;
-        this.id = id;
-        this.department = department;
-        this.start =  start;
-        this.finish = finish;
-    }
-
     @Override
     public String toString() {
         return "Preparation{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", department='" + department + '\'' +
+                "id=" + id +
+                ", departureID=" + departureID +
                 ", start=" + start +
                 ", finish=" + finish +
+                ", planeProcessingId=" + planeProcessingId +
                 '}';
     }
 }

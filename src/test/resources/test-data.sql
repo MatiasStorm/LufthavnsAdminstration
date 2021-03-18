@@ -38,3 +38,4 @@ INSERT INTO `plane` VALUES ('100','Fokker 100','M'),('141','BAe 146-100 Pax','M'
 -- Dumping data for table `terminal`
 --
 
+INSERT INTO `plane_processing` VALUES (1,2,2,2, '2020-01-01T10:00:00','2020-01-01T10:10:00' );

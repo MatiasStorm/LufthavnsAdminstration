@@ -123,6 +123,7 @@ CREATE TABLE `plane_processtype` (
 CREATE TABLE `plane_processing` (
   `plane_processing_id` int NOT NULL AUTO_INCREMENT,
   `work_id` int NOT NULL,
+  `arrival_id` int NOT NULL,
   `departure_id` int NOT NULL,
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,

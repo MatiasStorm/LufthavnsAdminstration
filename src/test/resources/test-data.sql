@@ -34,6 +34,7 @@ INSERT INTO `gate` VALUES (1,2,'M'),(2,2,'M'),(3,2,'L'),(4,2,'L'),(5,2,'L'),(6,2
 
 INSERT INTO `plane` VALUES ('100','Fokker 100','M'),('141','BAe 146-100 Pax','M'),('142','BAe 146-200 Pax','M');
 
+INSERT INTO `plane_processing` VALUES (1,1,2,'M'),('141','BAe 146-100 Pax','M'),('142','BAe 146-200 Pax','M');
 --
 -- Dumping data for table `terminal`
 --

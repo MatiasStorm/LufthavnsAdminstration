@@ -2,32 +2,32 @@ package com.cph.adminstration.model;
 
 import java.time.LocalDateTime;
 
-public class Preparation {
+public class PlaneProcess {
     private int id;
-    private int departureID;
+    private int departureId;
     private LocalDateTime start;
     private LocalDateTime finish;
     private int planeProcessingId;
-    private int arrival_id;
+    private int arrivalId;
 
-    public Preparation() {
+    public PlaneProcess() {
 
     }
 
-    public Preparation(int id, int departureID, LocalDateTime finish, int planeProcessingId, int arrival_id) {
+    public PlaneProcess(int id, int departureId, LocalDateTime finish, int planeProcessingId, int arrivalId) {
         this.id = id;
-        this.departureID = departureID;
+        this.departureId = departureId;
         this.finish = finish;
         this.planeProcessingId = planeProcessingId;
-        this.arrival_id = arrival_id;
+        this.arrivalId = arrivalId;
     }
 
-    public int getArrival_id() {
-        return arrival_id;
+    public int getArrivalId() {
+        return arrivalId;
     }
 
-    public void setArrival_id(int arrival_id) {
-        this.arrival_id = arrival_id;
+    public void setArrivalId(int arrivalId) {
+        this.arrivalId = arrivalId;
     }
 
     public int getPlaneProcessingId() { return planeProcessingId; }
@@ -42,12 +42,12 @@ public class Preparation {
         this.id = id;
     }
 
-    public int getDepartureID() {
-        return departureID;
+    public int getDepartureId() {
+        return departureId;
     }
 
-    public void setDepartureID(int departureID) {
-        this.departureID = departureID;
+    public void setDepartureId(int departureId) {
+        this.departureId = departureId;
     }
 
     public LocalDateTime getStart() {
@@ -70,7 +70,7 @@ public class Preparation {
     public String toString() {
         return "Preparation{" +
                 "id=" + id +
-                ", departureID=" + departureID +
+                ", departureID=" + departureId +
                 ", start=" + start +
                 ", finish=" + finish +
                 ", planeProcessingId=" + planeProcessingId +

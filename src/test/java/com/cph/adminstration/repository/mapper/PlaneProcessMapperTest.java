@@ -29,7 +29,7 @@ class PlaneProcessMapperTest {
     int departudeID =2;
     int arrivalID= 2;
     Timestamp start = new Timestamp(1020, 1, 1, 10, 0,0,0);
-    Timestamp end = new Timestamp (1020, 1, 1, 10,10,1,0);
+    Timestamp end = new Timestamp (1020, 1, 1, 10,10,0,0);
     int planeProcessingID = 2;
 
     @BeforeEach
@@ -41,22 +41,18 @@ class PlaneProcessMapperTest {
         Mockito.when(resultSet.getTimestamp("end")).thenReturn(end);
         Mockito.when(resultSet.getInt("plane_processing_id")).thenReturn(planeProcessingID);
     }
-@Test
+
+    @Test
     void mapRow() throws SQLException{
-
-
-
         PlaneProcess planeProcess = mapper.mapRow(resultSet, 1);
         assertEquals(work_id, planeProcess.getWork_id());
         assertEquals(departudeID, planeProcess.getDepartureId());
         assertEquals(arrivalID, planeProcess.getArrivalId());
-       LocalDateTime expectedStart =  LocalDateTime.of(start.getYear(), start.getMonth(), start.getDate(), start.getHours(),start.getMinutes(),start.getSeconds(),start.getNanos());
-      LocalDateTime expectedEnd =  LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), end.getHours(),end.getMinutes(),end.getSeconds(),end.getNanos());
+        LocalDateTime expectedStart =  LocalDateTime.of(start.getYear(), start.getMonth(), start.getDate(), start.getHours(),start.getMinutes(),start.getSeconds(),start.getNanos());
+        LocalDateTime expectedEnd =  LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), end.getHours(),end.getMinutes(),end.getSeconds(),end.getNanos());
         assertEquals(expectedStart,planeProcess.getStart());
-
-        assertEquals( expectedEnd,planeProcess.getEnd());
+        assertEquals(expectedEnd,planeProcess.getEnd());
         assertEquals(planeProcessingID, planeProcess.getPlaneProcessingId());
-
     }
 
 }

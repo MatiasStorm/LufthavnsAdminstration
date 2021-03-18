@@ -3,6 +3,7 @@ import com.cph.adminstration.model.Arrival;
 import com.cph.adminstration.service.ArrivalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,14 @@ public class ArrivalController {
         //Her returneres en responseentity, der gør det muligt at definere Http statussen - som viser om man overholder reglerne for en rest controller.
         return new ResponseEntity<Arrival>(arrivalResponse, HttpStatus.CREATED);
 
+    }
+
+    //Put mapping bruges til at ændre på et objekt
+    @PutMapping("")
+    //Herunder bliver produktet lavet til et objekt og fyldes ud med data fra Json
+    public ResponseEntity<Arrival> putArrival(@RequestBody Arrival arrival) {
+        // Smid alt fra vores Json ned i en update metode og skift det man har ændret i produktet
+        Arrival arrivalRespone = arrivalService.update(arrival);
+        return new ResponseEntity<Arrival>(arrivalRespone, HttpStatus.OK);
     }
 }

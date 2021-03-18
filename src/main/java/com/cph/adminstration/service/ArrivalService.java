@@ -20,12 +20,21 @@ public class ArrivalService {
         return arrivalDAO.create(arrival);
     }
 
+    public Arrival update(Arrival arrival) {
+        arrivalDAO.update(arrival);
+        return arrival;
+    }
+
     public List<Arrival> readAll() {
         List<Arrival> arrivals = new ArrayList<>();
         for (Arrival arrival : arrivalDAO.readAll()) {
             arrivals.add(arrival);
         }
         return arrivals;
+    }
+
+    public Arrival getArrival(Integer id) {
+        return arrivalDAO.getByID(id);
     }
 
 }

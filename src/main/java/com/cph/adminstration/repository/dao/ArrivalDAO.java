@@ -26,6 +26,7 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
 
     @Override
     public Arrival create(Arrival arrival) {
+
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         String sql = "INSERT INTO arrival " +
@@ -36,7 +37,7 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
         String time = arrival.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
 
-        //template.update(sql, date, arrival.getRouteNumber(), time, arrival.getAC(), arrival.getDestination(), arrival.getArrived(), arrival.getAirplaneID());
+
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, date);
@@ -49,6 +50,7 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
         }, keyHolder);
 
         arrival.setId(keyHolder.getKey().intValue());
+
 
         return arrival;
     }

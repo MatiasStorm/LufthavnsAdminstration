@@ -38,7 +38,7 @@ public class PlaneProcessDAO implements CRUD_DAO<PlaneProcess, Integer> {
 
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, planeProcess.getWork_id());
+            ps.setInt(1, planeProcess.getWorkId());
             ps.setInt(2, planeProcess.getDepartureId());
             ps.setInt(3, planeProcess.getArrivalId());
             ps.setString(4,start);

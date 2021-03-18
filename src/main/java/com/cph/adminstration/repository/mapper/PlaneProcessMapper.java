@@ -14,7 +14,7 @@ public class PlaneProcessMapper implements RowMapper<PlaneProcess> {
 
         PlaneProcess planeProcess = new PlaneProcess();
 
-        planeProcess.setWork_id(resultSet.getInt("work_id"));
+        planeProcess.setWorkId(resultSet.getInt("work_id"));
         planeProcess.setDepartureId(resultSet.getInt("departure_id"));
         planeProcess.setArrivalId(resultSet.getInt("arrival_id"));
         Timestamp start= resultSet.getTimestamp("start");

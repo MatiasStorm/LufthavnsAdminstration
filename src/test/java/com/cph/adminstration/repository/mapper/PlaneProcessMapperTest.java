@@ -7,11 +7,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -45,7 +43,7 @@ class PlaneProcessMapperTest {
     @Test
     void mapRow() throws SQLException{
         PlaneProcess planeProcess = mapper.mapRow(resultSet, 1);
-        assertEquals(work_id, planeProcess.getWork_id());
+        assertEquals(work_id, planeProcess.getWorkId());
         assertEquals(departudeID, planeProcess.getDepartureId());
         assertEquals(arrivalID, planeProcess.getArrivalId());
         LocalDateTime expectedStart =  LocalDateTime.of(start.getYear(), start.getMonth(), start.getDate(), start.getHours(),start.getMinutes(),start.getSeconds(),start.getNanos());

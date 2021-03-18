@@ -1,7 +1,5 @@
 package com.cph.adminstration.repository.dao;
 
-import com.cph.adminstration.model.Arrival;
-import com.cph.adminstration.model.Plane;
 import com.cph.adminstration.model.PlaneProcess;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ class PlaneProcessDAOTest {
     @Test
     void create (){
         PlaneProcess plane = new PlaneProcess();
-        plane.setWork_id(1);
+        plane.setWorkId(1);
         plane.setDepartureId(1);
         plane.setArrivalId(1);
         plane.setStart(LocalDateTime.of(2000,1,1,0,0,0));

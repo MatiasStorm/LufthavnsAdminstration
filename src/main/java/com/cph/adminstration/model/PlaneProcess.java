@@ -3,7 +3,7 @@ package com.cph.adminstration.model;
 import java.time.LocalDateTime;
 
 public class PlaneProcess {
-    private int work_id;
+    private int workId;
     private int departureId;
     private LocalDateTime start;
     private LocalDateTime end;
@@ -14,8 +14,8 @@ public class PlaneProcess {
 
     }
 
-    public PlaneProcess(int work_id, int departureId, LocalDateTime end, int planeProcessingId, int arrivalId) {
-        this.work_id = work_id;
+    public PlaneProcess(int workId, int departureId, LocalDateTime end, int planeProcessingId, int arrivalId) {
+        this.workId = workId;
         this.departureId = departureId;
         this.end = end;
         this.planeProcessingId = planeProcessingId;
@@ -34,12 +34,12 @@ public class PlaneProcess {
 
     public void setPlaneProcessingId(int planeProcessingId) { this.planeProcessingId = planeProcessingId; }
 
-    public int getWork_id() {
-        return work_id;
+    public int getWorkId() {
+        return workId;
     }
 
-    public void setWork_id(int work_id) {
-        this.work_id = work_id;
+    public void setWorkId(int workId) {
+        this.workId = workId;
     }
 
     public int getDepartureId() {
@@ -69,7 +69,7 @@ public class PlaneProcess {
     @Override
     public String toString() {
         return "Preparation{" +
-                "id=" + work_id +
+                "id=" + workId +
                 ", departureID=" + departureId +
                 ", start=" + start +
                 ", finish=" + end +

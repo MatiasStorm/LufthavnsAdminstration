@@ -3,10 +3,10 @@ package com.cph.adminstration.model;
 import java.time.LocalDateTime;
 
 public class PlaneProcess {
-    private int id;
+    private int workId;
     private int departureId;
     private LocalDateTime start;
-    private LocalDateTime finish;
+    private LocalDateTime end;
     private int planeProcessingId;
     private int arrivalId;
 
@@ -14,10 +14,10 @@ public class PlaneProcess {
 
     }
 
-    public PlaneProcess(int id, int departureId, LocalDateTime finish, int planeProcessingId, int arrivalId) {
-        this.id = id;
+    public PlaneProcess(int workId, int departureId, LocalDateTime end, int planeProcessingId, int arrivalId) {
+        this.workId = workId;
         this.departureId = departureId;
-        this.finish = finish;
+        this.end = end;
         this.planeProcessingId = planeProcessingId;
         this.arrivalId = arrivalId;
     }
@@ -34,12 +34,12 @@ public class PlaneProcess {
 
     public void setPlaneProcessingId(int planeProcessingId) { this.planeProcessingId = planeProcessingId; }
 
-    public int getId() {
-        return id;
+    public int getWorkId() {
+        return workId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setWorkId(int workId) {
+        this.workId = workId;
     }
 
     public int getDepartureId() {
@@ -58,21 +58,21 @@ public class PlaneProcess {
         this.start = start;
     }
 
-    public LocalDateTime getFinish() {
-        return finish;
+    public LocalDateTime getEnd() {
+        return end;
     }
 
-    public void setFinish(LocalDateTime finish) {
-        this.finish = finish;
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
     }
 
     @Override
     public String toString() {
         return "Preparation{" +
-                "id=" + id +
+                "id=" + workId +
                 ", departureID=" + departureId +
                 ", start=" + start +
-                ", finish=" + finish +
+                ", finish=" + end +
                 ", planeProcessingId=" + planeProcessingId +
                 '}';
     }

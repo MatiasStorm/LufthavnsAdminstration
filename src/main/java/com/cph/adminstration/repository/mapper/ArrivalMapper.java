@@ -23,6 +23,8 @@ public class ArrivalMapper implements RowMapper<Arrival> {
         arrival.setDestination(resultSet.getString("arrival_destination"));
         arrival.setIsArrived(resultSet.getBoolean("is_arrived"));
 
+
+
         return arrival;
     }
 }

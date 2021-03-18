@@ -26,6 +26,8 @@ public class PlaneDAO implements CRUD_DAO<Plane, Integer> {
 
     @Override
     public List<Plane> readAll() {
+        String sql = "SELECT * FROM plane";
+
         return null;
     }
 

@@ -24,6 +24,7 @@ public class ArrivalMapper implements RowMapper<Arrival> {
         arrival.setIsArrived(resultSet.getBoolean("is_arrived"));
 
 
+
         return arrival;
     }
 }

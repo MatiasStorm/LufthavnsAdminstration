@@ -47,6 +47,8 @@ public class ArrivalDAO implements CRUD_DAO<Arrival, Integer> {
         }, keyHolder);
 
         arrival.setId(keyHolder.getKey().intValue());
+
+        arrival.setId((Integer) keyHolder.getKey());
         return arrival;
     }
 

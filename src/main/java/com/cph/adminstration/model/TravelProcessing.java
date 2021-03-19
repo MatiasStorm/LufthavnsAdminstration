@@ -3,7 +3,7 @@ package com.cph.adminstration.model;
 public class TravelProcessing {
     private int id;
     private int departmentId;
-    private TravelProcessType travelProcess;
+    private int travelProcessId;
     private int fromDepartureId;
     private int fromArrivalId;
     private int toDepartureId;
@@ -25,12 +25,12 @@ public class TravelProcessing {
         this.departmentId = departmentId;
     }
 
-    public TravelProcessType getTravelProcess() {
-        return travelProcess;
+    public int getTravelProcessId() {
+        return travelProcessId;
     }
 
-    public void setTravelProcess(TravelProcessType travelProcess) {
-        this.travelProcess = travelProcess;
+    public void setTravelProcessId(int travelProcessId) {
+        this.travelProcessId = travelProcessId;
     }
 
     public int getFromDepartureId() {

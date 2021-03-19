@@ -55,8 +55,9 @@ public class PlaneProcessingDAO implements CRUD_DAO<PlaneProcessing, Integer> {
     }
 
     @Override
-    public PlaneProcessing getByID(Integer id) {
-        return null;
+    public PlaneProcessing getByID(Integer plane_processing_id) {
+        String sql = "SELECT * FROM plane_processing WHERE plane_processing_id = ?";
+        return template.queryForObject(sql, planeProcessingMapper, plane_processing_id);
     }
 
     @Override

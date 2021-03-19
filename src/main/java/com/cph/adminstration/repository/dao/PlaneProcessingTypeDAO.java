@@ -3,6 +3,8 @@ package com.cph.adminstration.repository.dao;
 import com.cph.adminstration.model.PlaneProcessingType;
 import com.cph.adminstration.repository.mapper.PlaneProcessingTypeMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import java.util.List;
 
@@ -28,9 +30,9 @@ public class PlaneProcessingTypeDAO implements CRUD_DAO<PlaneProcessingType, Int
     }
 
     @Override
-    public PlaneProcessingType getByID(Integer primaryKey) {
-
-        return null;
+    public PlaneProcessingType getByID(Integer work_id) {
+    String sql = "SELECT * FROM plane_processtype WHERE work_id = ?";
+        return template.queryForObject(sql, planeProcessingTypeMapper, work_id);
     }
 
     @Override

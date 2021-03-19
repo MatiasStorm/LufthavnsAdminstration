@@ -2,7 +2,7 @@ package com.cph.adminstration.model;
 
 import java.time.LocalTime;
 
-public class PlaneProcessType {
+public class PlaneProcessingType {
 
     private int workId;
     private String workType;
@@ -13,10 +13,10 @@ public class PlaneProcessType {
 
 
 
-    public PlaneProcessType() {
+    public PlaneProcessingType() {
     }
 
-    public PlaneProcessType(int workId, String workType, int departmentId, LocalTime timeSmall, LocalTime timeStandard, LocalTime timeLarge) {
+    public PlaneProcessingType(int workId, String workType, int departmentId, LocalTime timeSmall, LocalTime timeStandard, LocalTime timeLarge) {
         this.workId = workId;
         this.workType = workType;
         this.departmentId = departmentId;

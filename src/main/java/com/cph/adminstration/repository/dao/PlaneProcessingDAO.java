@@ -1,6 +1,6 @@
 package com.cph.adminstration.repository.dao;
-import com.cph.adminstration.model.PlaneProcess;
-import com.cph.adminstration.repository.mapper.PlaneProcessMapper;
+import com.cph.adminstration.model.PlaneProcessing;
+import com.cph.adminstration.repository.mapper.PlaneProcessingMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -12,17 +12,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Repository
-public class PlaneProcessDAO implements CRUD_DAO<PlaneProcess, Integer> {
+public class PlaneProcessingDAO implements CRUD_DAO<PlaneProcessing, Integer> {
 
     private final JdbcTemplate template;
-    PlaneProcessMapper planeProcessMapper;
+    PlaneProcessingMapper planeProcessingMapper;
 
-    public PlaneProcessDAO(JdbcTemplate template) {
+    public PlaneProcessingDAO(JdbcTemplate template) {
         this.template = template;
     }
 
     @Override
-    public PlaneProcess create(PlaneProcess planeProcess) {
+    public PlaneProcessing create(PlaneProcessing planeProcessing) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         String sql = " INSERT INTO plane_processing " +
@@ -31,36 +31,36 @@ public class PlaneProcessDAO implements CRUD_DAO<PlaneProcess, Integer> {
 
 
 
-            String start = planeProcess.getStart()!= null ? planeProcess.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null ;
+            String start = planeProcessing.getStart()!= null ? planeProcessing.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null ;
 
-            String end =planeProcess.getEnd()!= null ? planeProcess.getEnd().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null;
+            String end = planeProcessing.getEnd()!= null ? planeProcessing.getEnd().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null;
 
 
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, planeProcess.getWorkId());
-            ps.setInt(2, planeProcess.getDepartureId());
-            ps.setInt(3, planeProcess.getArrivalId());
+            ps.setInt(1, planeProcessing.getWorkId());
+            ps.setInt(2, planeProcessing.getDepartureId());
+            ps.setInt(3, planeProcessing.getArrivalId());
             ps.setString(4,start);
             ps.setString(5,end);
             return ps;
         }, keyHolder);
-        planeProcess.setPlaneProcessingId(keyHolder.getKey().intValue());
-        return planeProcess;
+        planeProcessing.setPlaneProcessingId(keyHolder.getKey().intValue());
+        return planeProcessing;
 }
     @Override
-    public List<PlaneProcess> readAll() {
+    public List<PlaneProcessing> readAll() {
     String sql= "SELECT * FROM plane_processing";
-        return template.query(sql, planeProcessMapper);
+        return template.query(sql, planeProcessingMapper);
     }
 
     @Override
-    public PlaneProcess getByID(Integer id) {
+    public PlaneProcessing getByID(Integer id) {
         return null;
     }
 
     @Override
-    public void update(PlaneProcess planeProcess) {
+    public void update(PlaneProcessing planeProcessing) {
 
     }
 

@@ -2,7 +2,7 @@ package com.cph.adminstration.model;
 import java.time.LocalDateTime;
 
 
-public class Arrival {
+public class Arrival  implements DailyPlanning{
     private int id;
     private LocalDateTime dateTime;
     private String routeNumber;
@@ -24,6 +24,12 @@ public class Arrival {
         this.destination = destination;
         this.isArrived = isArrived;
     }
+
+    public String getTravelType(){
+        return "Arrival";
+    }
+
+
 
     public int getId() {
         return id;
@@ -72,5 +78,6 @@ public class Arrival {
     public void setIsArrived(Boolean arrived) {
         isArrived = arrived;
     }
+
 
 }

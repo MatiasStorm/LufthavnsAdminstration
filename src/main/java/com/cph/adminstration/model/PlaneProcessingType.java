@@ -1,6 +1,8 @@
 package com.cph.adminstration.model;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaneProcessingType {
 
@@ -10,8 +12,7 @@ public class PlaneProcessingType {
     private LocalTime timeSmall;
     private LocalTime timeStandard;
     private LocalTime timeLarge;
-
-
+    private List<Integer> dependencyIds;
 
     public PlaneProcessingType() {
     }
@@ -25,6 +26,13 @@ public class PlaneProcessingType {
         this.timeLarge = timeLarge;
     }
 
+    public List<Integer> getDependencyIds() {
+        return dependencyIds;
+    }
+
+    public void setDependencyIds(List<Integer> dependencyIds) {
+        this.dependencyIds = dependencyIds;
+    }
 
     public int getWorkId() {
         return workId;

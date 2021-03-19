@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PlaneProcessingTypeMapper implements RowMapper<PlaneProcessingType> {
 
@@ -25,8 +27,11 @@ public class PlaneProcessingTypeMapper implements RowMapper<PlaneProcessingType>
         planeProcessingType.setTimeSmall(LocalTime.of(timeStandard.getHours(),timeStandard.getMinutes(), timeStandard.getSeconds()));
         Time timeLarge = resultSet.getTime("time_large");
         planeProcessingType.setTimeSmall(LocalTime.of(timeLarge.getHours(),timeLarge.getMinutes(), timeLarge.getSeconds()));
-
-
+        ArrayList<Integer> dependencyIds = new ArrayList<>();
+        for(String id : resultSet.getString("dependencies").split(",")){
+            dependencyIds.add(Integer.parseInt(id));
+        }
+        planeProcessingType.setDependencyIds(dependencyIds);
         return planeProcessingType;
     }
 }

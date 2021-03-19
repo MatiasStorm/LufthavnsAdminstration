@@ -25,13 +25,18 @@ public class PlaneProcessingTypeDAO implements CRUD_DAO<PlaneProcessingType, Int
 
     @Override
     public List<PlaneProcessingType> readAll() {
-        String sql = "SELECT * FROM plane_processtype";
+        String sql = "SELECT plane_processtype.*, GROUP_CONCAT(phd.dependency_process SEPARATOR ',') as dependencies from plane_processtype"
+                    + " LEFT JOIN processtype_has_dependency phd on plane_processtype.work_id = phd.dependant_process"
+                    + " GROUP BY plane_processtype.work_id";
         return template.query(sql, planeProcessingTypeMapper);
     }
 
     @Override
     public PlaneProcessingType getByID(Integer work_id) {
-    String sql = "SELECT * FROM plane_processtype WHERE work_id = ?";
+        String sql = "SELECT plane_processtype.*, GROUP_CONCAT(phd.dependency_process SEPARATOR ',') as dependencies from plane_processtype"
+                + " LEFT JOIN processtype_has_dependency phd on plane_processtype.work_id = phd.dependant_process"
+                + " WHERE work_id = ?"
+                + " GROUP BY plane_processtype.work_id";
         return template.queryForObject(sql, planeProcessingTypeMapper, work_id);
     }
 

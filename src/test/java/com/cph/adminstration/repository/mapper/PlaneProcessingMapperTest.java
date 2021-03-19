@@ -1,6 +1,6 @@
 package com.cph.adminstration.repository.mapper;
 
-import com.cph.adminstration.model.PlaneProcess;
+import com.cph.adminstration.model.PlaneProcessing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class PlaneProcessMapperTest {
+class PlaneProcessingMapperTest {
 
-    private PlaneProcessMapper mapper = new PlaneProcessMapper();
+    private PlaneProcessingMapper mapper = new PlaneProcessingMapper();
 
     @Mock
     private ResultSet resultSet;
@@ -42,15 +42,15 @@ class PlaneProcessMapperTest {
 
     @Test
     void mapRow() throws SQLException{
-        PlaneProcess planeProcess = mapper.mapRow(resultSet, 1);
-        assertEquals(work_id, planeProcess.getWorkId());
-        assertEquals(departudeID, planeProcess.getDepartureId());
-        assertEquals(arrivalID, planeProcess.getArrivalId());
+        PlaneProcessing planeProcessing = mapper.mapRow(resultSet, 1);
+        assertEquals(work_id, planeProcessing.getWorkId());
+        assertEquals(departudeID, planeProcessing.getDepartureId());
+        assertEquals(arrivalID, planeProcessing.getArrivalId());
         LocalDateTime expectedStart =  LocalDateTime.of(start.getYear(), start.getMonth(), start.getDate(), start.getHours(),start.getMinutes(),start.getSeconds(),start.getNanos());
         LocalDateTime expectedEnd =  LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), end.getHours(),end.getMinutes(),end.getSeconds(),end.getNanos());
-        assertEquals(expectedStart,planeProcess.getStart());
-        assertEquals(expectedEnd,planeProcess.getEnd());
-        assertEquals(planeProcessingID, planeProcess.getPlaneProcessingId());
+        assertEquals(expectedStart, planeProcessing.getStart());
+        assertEquals(expectedEnd, planeProcessing.getEnd());
+        assertEquals(planeProcessingID, planeProcessing.getPlaneProcessingId());
     }
 
 }

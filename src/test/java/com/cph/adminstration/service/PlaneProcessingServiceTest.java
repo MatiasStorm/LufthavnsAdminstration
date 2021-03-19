@@ -1,32 +1,31 @@
 package com.cph.adminstration.service;
 
-import com.cph.adminstration.model.PlaneProcess;
-import com.cph.adminstration.repository.dao.PlaneProcessDAO;
+import com.cph.adminstration.model.PlaneProcessing;
+import com.cph.adminstration.repository.dao.PlaneProcessingDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-class PlaneProcessServiceTest {
+class PlaneProcessingServiceTest {
 
 
     @Mock
-    PlaneProcessDAO dao;
-    PlaneProcessService service;
+    PlaneProcessingDAO dao;
+    PlaneProcessingService service;
 
     @BeforeEach
     public void setup(){
-        this.service = new PlaneProcessService(dao);
+        this.service = new PlaneProcessingService(dao);
     }
 
     @Test
     void create() {
-        PlaneProcess planeProcess = new PlaneProcess();
-        service.create(planeProcess);
-        Mockito.verify(dao, Mockito.times(1)).create(planeProcess);
+        PlaneProcessing planeProcessing = new PlaneProcessing();
+        service.create(planeProcessing);
+        Mockito.verify(dao, Mockito.times(1)).create(planeProcessing);
     }
     @Test
     void readAll() {

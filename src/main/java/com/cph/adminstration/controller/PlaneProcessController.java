@@ -1,7 +1,7 @@
 package com.cph.adminstration.controller;
 
-import com.cph.adminstration.model.PlaneProcess;
-import com.cph.adminstration.service.PlaneProcessService;
+import com.cph.adminstration.model.PlaneProcessing;
+import com.cph.adminstration.service.PlaneProcessingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping ("/planeProcess")
 @RestController
 public class PlaneProcessController {
-    private final PlaneProcessService planeProcessService;
+    private final PlaneProcessingService planeProcessingService;
 
-    public PlaneProcessController(PlaneProcessService planeProcessService) { this.planeProcessService = planeProcessService; }
+    public PlaneProcessController(PlaneProcessingService planeProcessingService) { this.planeProcessingService = planeProcessingService; }
 
     @PostMapping()
-    public ResponseEntity<PlaneProcess> createProduct(@RequestBody PlaneProcess planeProcess){
+    public ResponseEntity<PlaneProcessing> createProduct(@RequestBody PlaneProcessing planeProcessing){
 
-        PlaneProcess planeProcessResponse = planeProcessService.create(planeProcess);
+        PlaneProcessing planeProcessingResponse = planeProcessingService.create(planeProcessing);
 
-        return new ResponseEntity<PlaneProcess>(planeProcessResponse, HttpStatus.CREATED);
+        return new ResponseEntity<PlaneProcessing>(planeProcessingResponse, HttpStatus.CREATED);
     }
 }

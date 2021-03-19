@@ -20,7 +20,6 @@ public class PlanningService {
         this.planeProcessingDAO = planeProcessingDAO;
         this.travelProcessingDAO = travelProcessingDAO;
         this.arrivalDAO = arrivalDAO;
-        processingTypes = planeProcessingTypeDAO.readAll();
     }
 
     public void createPlaneProcessings(Arrival arrival){

@@ -5,9 +5,11 @@ import com.cph.adminstration.repository.mapper.PlaneProcessingTypeMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class PlaneProcessingTypeDAO implements CRUD_DAO<PlaneProcessingType, Integer> {
 
     private final JdbcTemplate template;

@@ -1,4 +1,5 @@
 package com.cph.adminstration.repository.dao;
+
 import com.cph.adminstration.model.PlaneProcessing;
 import com.cph.adminstration.repository.mapper.PlaneProcessingMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,10 +31,9 @@ public class PlaneProcessingDAO implements CRUD_DAO<PlaneProcessing, Integer> {
                 " VALUES (?, ?, ?, ?, ?)";
 
 
+        String start = planeProcessing.getStart() != null ? planeProcessing.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) : null;
 
-            String start = planeProcessing.getStart()!= null ? planeProcessing.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null ;
-
-            String end = planeProcessing.getEnd()!= null ? planeProcessing.getEnd().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) :null;
+        String end = planeProcessing.getEnd() != null ? planeProcessing.getEnd().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) : null;
 
 
         template.update(connection -> {
@@ -41,16 +41,17 @@ public class PlaneProcessingDAO implements CRUD_DAO<PlaneProcessing, Integer> {
             ps.setInt(1, planeProcessing.getWorkId());
             ps.setInt(2, planeProcessing.getDepartureId());
             ps.setInt(3, planeProcessing.getArrivalId());
-            ps.setString(4,start);
-            ps.setString(5,end);
+            ps.setString(4, start);
+            ps.setString(5, end);
             return ps;
         }, keyHolder);
         planeProcessing.setPlaneProcessingId(keyHolder.getKey().intValue());
         return planeProcessing;
-}
+    }
+
     @Override
     public List<PlaneProcessing> readAll() {
-    String sql= "SELECT * FROM plane_processing";
+        String sql = "SELECT * FROM plane_processing";
         return template.query(sql, planeProcessingMapper);
     }
 
@@ -62,11 +63,15 @@ public class PlaneProcessingDAO implements CRUD_DAO<PlaneProcessing, Integer> {
 
     @Override
     public void update(PlaneProcessing planeProcessing) {
-
+        String updateStatement = "UPDATE plane_processing " + "SET work_id = ?, departure_id = ?, arrival_id = ?, start = ?, end = ?" + "WHERE plane_processing_id = ?";
+        template.update(updateStatement, planeProcessing.getWorkId(), planeProcessing.getDepartureId(), planeProcessing.getArrivalId(),
+                planeProcessing.getStart(), planeProcessing.getEnd(), planeProcessing.getPlaneProcessingId());
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer plane_processing_id) {
+        String deleteStatement = "DELETE FROM plane_processing WHERE plane_processing_id = ?";
+        template.queryForObject(deleteStatement, planeProcessingMapper, plane_processing_id);
 
     }
 }

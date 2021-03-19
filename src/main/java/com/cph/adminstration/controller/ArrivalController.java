@@ -1,10 +1,13 @@
 package com.cph.adminstration.controller;
 import com.cph.adminstration.model.Arrival;
 import com.cph.adminstration.service.ArrivalService;
+import com.cph.adminstration.service.PdfService;
+import com.itextpdf.text.DocumentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @RequestMapping("/arrival")
@@ -12,14 +15,16 @@ import java.util.List;
 public class ArrivalController {
 
     private final ArrivalService arrivalService;
+    private final PdfService pdfService;
 
-    public ArrivalController(ArrivalService arrivalService){
+    public ArrivalController(ArrivalService arrivalService, PdfService pdfService){
         this.arrivalService = arrivalService;
+        this.pdfService = pdfService;
     }
 
     @GetMapping()
-    public List<Arrival> getArrivals() {
-        return arrivalService.readAll();
+    public void getArrivals() throws FileNotFoundException, DocumentException {
+        pdfService.createPdf();
     }
 
     @PostMapping()
